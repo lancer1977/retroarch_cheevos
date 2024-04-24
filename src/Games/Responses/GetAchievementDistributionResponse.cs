@@ -1,0 +1,1 @@
+public class GetAchievementDistributionResponse : Dictionary<string, int> { }
