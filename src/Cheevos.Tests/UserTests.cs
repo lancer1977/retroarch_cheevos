@@ -1,5 +1,5 @@
-using System;
 namespace PolyhydraGames.RACheevos.Test;
+
 public class UserTests : BaseTests
 {
     private IRetroArchUserApi Api { get; set; }
@@ -12,14 +12,14 @@ public class UserTests : BaseTests
     [Test]
     public async Task GetUserProfile()
     {
-        var result = await Api.GetUserProfile(base.TestUser);
+        var result = await Api.GetUserProfile(TestUser);
         Assert.That(result.User == TestUser);
     }
 
     [Test]
     public async Task GetUserRecentAchievements()
     {
-        var result = await Api.GetUserRecentAchievements(base.TestUser, 100011);
+        var result = await Api.GetUserRecentAchievements(TestUser, 100011);
         Assert.That(result.Any());
     }
 

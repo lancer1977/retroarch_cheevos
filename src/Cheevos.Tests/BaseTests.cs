@@ -1,5 +1,4 @@
 using Microsoft.Extensions.Configuration;
-using PolyhydraGames.RACheevos;
 
 namespace PolyhydraGames.RACheevos.Test;
     public abstract class BaseTests

@@ -1,4 +1,6 @@
 
+using PolyhydraGames.RACheevos;
+
 public class RetroArchUserApi : RestServiceBase, IRetroArchUserApi
 { 
 

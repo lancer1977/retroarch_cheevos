@@ -1,3 +1,6 @@
+ 
+
+namespace PolyhydraGames.RACheevos;
 public class EventApi : RestServiceBase, IRetroArchEventApi
 { 
 

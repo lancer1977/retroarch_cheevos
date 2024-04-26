@@ -1,4 +1,5 @@
- 
+  
+namespace PolyhydraGames.RACheevos;
 public class RetroArchCheevoApi : RestServiceBase, IRetroArchGameApi
 {
 

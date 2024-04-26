@@ -1,14 +1,9 @@
 public static class ApiUrls
 {
-    public static string ToEpoch(this DateTime time)
+    public static int ToEpoch(this DateTime time)
     {
-        return time.ToString();
+        var t = time.ToUniversalTime() - new DateTime(1970, 1, 1);
+        int secondsSinceEpoch = (int)t.TotalSeconds;
+        return secondsSinceEpoch;
     }
-
-  
-
- 
-
-
-    
 }

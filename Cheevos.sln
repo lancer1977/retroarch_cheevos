@@ -9,6 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolyhydraGames.RACheevos", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{3AF77599-53C2-4C83-A4DA-657D51D805B0}"
 	ProjectSection(SolutionItems) = preProject
+		.pipelines\cheevos.yml = .pipelines\cheevos.yml
 		directory.build.props = directory.build.props
 		README.md = README.md
 	EndProjectSection

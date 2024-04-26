@@ -1,3 +1,5 @@
+namespace PolyhydraGames.RACheevos;
+
 public class AchievementApi : RestServiceBase, IRetroArchAchievementApi
 { 
 
@@ -5,9 +7,9 @@ public class AchievementApi : RestServiceBase, IRetroArchAchievementApi
     { 
     }
 
-    public async Task<AchievementUnlocksResponse> GetAchievementUnlocks(int achievementId,int count, int offset)
+    public async Task<AchievementUnlocksResponse> GetAchievementUnlocks(int achievementId,int count = 50, int offset = 0)
     {
-        var url = GetBaseUrl( ) + $"&a={achievementId}&c={count}&o={offset}"; 
+        var url = GetBaseUrl() + $"&a={achievementId}".Offset(offset).Count(count);
         return await Get<AchievementUnlocksResponse>(url);
     }
 }

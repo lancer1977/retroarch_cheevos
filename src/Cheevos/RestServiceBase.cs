@@ -1,8 +1,48 @@
-using System.Diagnostics;
-using System.Net;
-using System.Runtime.CompilerServices;
-using System.Text.Json;
+namespace PolyhydraGames.RACheevos;
+public interface IAuthConfig
+{
+    public string ApiKey { get; }
+    public string UserName { get; }
 
+}
+public static class AppendExtensions
+{
+    public static string Offset(this string url, int? offset)
+    {
+        if (offset == null)
+        {
+            return url;
+        }
+        return url + $"&o={offset}";
+    }
+
+    public static string Count(this string url, int? count)
+    {
+        if (count == null)
+        {
+            return url;
+        }
+        return url + $"&c={count}";
+    }
+
+    public static string Kinds(this string url, string? kinds)
+    {
+        if (kinds == null)
+        {
+            return url;
+        }
+        return url + $"&k={kinds}";
+    }
+
+    public static string Date(this string url, DateTime? date)
+    {
+        if (date == null)
+        {
+            return url;
+        }
+        return url + $"&d={date:yyyy-MM-dd}";
+    }
+}
 public class RestServiceBase
 {
     protected IAuthConfig AuthConfig { get; set; }
@@ -26,10 +66,7 @@ public class RestServiceBase
         PropertyNameCaseInsensitive = true
     };
 
-    //protected List<(string, string)> Wrap(params (string, string)[] items)
-    //{
-    //    return ((IEnumerable<(string, string)>)items).ToList<(string, string)>();
-    //}
+ 
 
     protected Uri Uri(string query)
     {
@@ -76,16 +113,16 @@ public class RestServiceBase
         if (httpResponseMessage.StatusCode == HttpStatusCode.Unauthorized)
             throw this.OnUnauthorized();
         throw new Exception(httpResponseMessage.StatusCode.ToString() + ":" + httpResponseMessage.ReasonPhrase);
-}
+    }
 
-protected async Task<HttpRequestMessage> GetHttpRequestMessage(string method, HttpMethod httpMethod, HttpContent content = null)
-{
-    return new HttpRequestMessage()
+    protected async Task<HttpRequestMessage> GetHttpRequestMessage(string method, HttpMethod httpMethod, HttpContent content = null)
     {
-        RequestUri = this.Uri(method),
-        Method = httpMethod,
-        Content = content
-    };
-}
+        return new HttpRequestMessage()
+        {
+            RequestUri = this.Uri(method),
+            Method = httpMethod,
+            Content = content
+        };
+    }
 
 }
