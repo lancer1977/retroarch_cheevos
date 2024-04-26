@@ -1,3 +1,4 @@
+namespace PolyhydraGames.RACheevos;
 public class RecentlyAwardedAchievementEntity
 {
     public string NumPossibleAchievements { get; set; }

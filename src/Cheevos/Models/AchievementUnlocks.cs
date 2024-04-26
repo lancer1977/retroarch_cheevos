@@ -1,3 +1,4 @@
+namespace PolyhydraGames.RACheevos;
 public class AchievementUnlocks
 {
     public int ID { get; set; }

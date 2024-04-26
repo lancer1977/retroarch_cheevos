@@ -1,3 +1,4 @@
+namespace PolyhydraGames.RACheevos;
 public class AchievementCount
 {
     public int GameId { get; set; }

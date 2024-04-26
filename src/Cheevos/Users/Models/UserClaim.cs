@@ -1,3 +1,4 @@
+namespace PolyhydraGames.RACheevos;
 public class UserClaim
 {
     public int ID { get; set; }

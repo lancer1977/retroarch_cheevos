@@ -1,3 +1,4 @@
+namespace PolyhydraGames.RACheevos;
 public class UserProfile
 {
     public string User { get; set; }

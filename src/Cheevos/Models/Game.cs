@@ -1,3 +1,4 @@
+namespace PolyhydraGames.RACheevos;
 public class Game
 {
     [JsonPropertyName("id")]

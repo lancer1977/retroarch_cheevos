@@ -1,3 +1,4 @@
+namespace PolyhydraGames.RACheevos;
 public class GameProgress
 {
     public int NumPossibleAchievements { get; set; }

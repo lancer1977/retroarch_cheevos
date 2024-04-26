@@ -1,4 +1,4 @@
-
+namespace PolyhydraGames.RACheevos;
 public class Result
 {
     public int GameID { get; set; }
@@ -12,13 +12,4 @@ public class Result
     public DateTime MostRecentAwardedDate { get; set; }
     public string HighestAwardKind { get; set; }
     public DateTime? HighestAwardDate { get; set; }
-}
-
- 
-
-public class UserCompletionProgressResponse
-{
-    public int Count { get; set; }
-    public int Total { get; set; }
-    public List<Result> Results { get; set; }
 }

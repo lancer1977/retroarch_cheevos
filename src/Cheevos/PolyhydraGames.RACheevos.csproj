@@ -1,18 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFrameworks>net6.0;net8.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<Language>8.0</Language>
+		<Title>Retroarch Cheevos</Title>
+		<Authors>Dread Breadcrumb</Authors>
+		<Description>A C# wrapper for the Retroarch Cheevo rest API</Description>
+		<Copyright>2024</Copyright>
+		<PackageProjectUrl>https://github.com/lancer1977/retroarch_cheevos</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/lancer1977/retroarch_cheevos</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<AnalysisLevel>5.0-recommended</AnalysisLevel>
+		<PackageId>PolyhydraGames.Retroarch.Cheevos</PackageId>
+		<Authors>John Doe</Authors>
+		<Company>Contoso</Company>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <Folder Include="Games\Models\" />
-	  <Folder Include="Users\Enums\" />
-	</ItemGroup>
 
 	<ItemGroup>
 	  <PackageReference Update="SonarAnalyzer.CSharp" Version="9.24.0.89429" />
 	</ItemGroup>
+
+ 
  
 </Project>

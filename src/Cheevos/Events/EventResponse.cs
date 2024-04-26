@@ -1,7 +1,8 @@
+namespace PolyhydraGames.RACheevos;
 public class EventResponse
 {
     public Achievement Achievement { get; set; }
-    public Console Console { get; set; }
+    public GameConsole Console { get; set; }
     public ForumTopic ForumTopic { get; set; }
     public Game Game { get; set; }
     public DateTime StartAt { get; set; }

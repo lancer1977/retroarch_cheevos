@@ -1,3 +1,4 @@
+namespace PolyhydraGames.RACheevos;
 public class Achievement
 {
     public string Date { get; set; }

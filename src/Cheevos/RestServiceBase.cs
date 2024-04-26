@@ -5,44 +5,7 @@ public interface IAuthConfig
     public string UserName { get; }
 
 }
-public static class AppendExtensions
-{
-    public static string Offset(this string url, int? offset)
-    {
-        if (offset == null)
-        {
-            return url;
-        }
-        return url + $"&o={offset}";
-    }
 
-    public static string Count(this string url, int? count)
-    {
-        if (count == null)
-        {
-            return url;
-        }
-        return url + $"&c={count}";
-    }
-
-    public static string Kinds(this string url, string? kinds)
-    {
-        if (kinds == null)
-        {
-            return url;
-        }
-        return url + $"&k={kinds}";
-    }
-
-    public static string Date(this string url, DateTime? date)
-    {
-        if (date == null)
-        {
-            return url;
-        }
-        return url + $"&d={date:yyyy-MM-dd}";
-    }
-}
 public class RestServiceBase
 {
     protected IAuthConfig AuthConfig { get; set; }

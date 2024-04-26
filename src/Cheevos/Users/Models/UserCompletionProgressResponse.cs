@@ -1,13 +1,7 @@
-// Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-public class UserAwardsResponse
+namespace PolyhydraGames.RACheevos;
+public class UserCompletionProgressResponse
 {
-    public int TotalAwardsCount { get; set; }
-    public int HiddenAwardsCount { get; set; }
-    public int MasteryAwardsCount { get; set; }
-    public int CompletionAwardsCount { get; set; }
-    public int BeatenHardcoreAwardsCount { get; set; }
-    public int BeatenSoftcoreAwardsCount { get; set; }
-    public int EventAwardsCount { get; set; }
-    public int SiteAwardsCount { get; set; }
-    public List<VisibleUserAward> VisibleUserAwards { get; set; }
+    public int Count { get; set; }
+    public int Total { get; set; }
+    public List<Result> Results { get; set; }
 }

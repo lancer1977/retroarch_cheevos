@@ -1,3 +1,4 @@
+namespace PolyhydraGames.RACheevos;
 public class LastGame
 {
     public int ID { get; set; }

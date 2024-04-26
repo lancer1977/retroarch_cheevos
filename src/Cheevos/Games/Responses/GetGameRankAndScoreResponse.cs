@@ -1,1 +1,1 @@
-public class GetGameRankAndScoreResponse : List<GameRankAndScore> { }
+namespace PolyhydraGames.RACheevos; public class GetGameRankAndScoreResponse : List<GameRankAndScore> { }

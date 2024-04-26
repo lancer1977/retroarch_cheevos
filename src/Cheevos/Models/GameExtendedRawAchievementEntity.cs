@@ -1,3 +1,4 @@
+namespace PolyhydraGames.RACheevos;
 public class GameExtendedRawAchievementEntity
 {
     public int ID { get; set; }

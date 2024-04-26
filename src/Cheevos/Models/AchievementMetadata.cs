@@ -1,3 +1,4 @@
+namespace PolyhydraGames.RACheevos;
 public class AchievementMetadata
 {
     public int Id { get; set; }

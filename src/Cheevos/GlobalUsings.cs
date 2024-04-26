@@ -1,4 +1,6 @@
 // Global using directives
+global using PolyhydraGames.RACheevos.Models;
+global using System.Runtime.CompilerServices;
 
 global using System.Diagnostics;
 global using System.Net;

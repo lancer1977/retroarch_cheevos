@@ -1,3 +1,4 @@
+namespace PolyhydraGames.RACheevos;
 public class Ratings
 {
     public int Game { get; set; }

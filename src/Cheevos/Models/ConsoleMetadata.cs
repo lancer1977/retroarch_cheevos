@@ -1,3 +1,4 @@
+namespace PolyhydraGames.RACheevos;
 public class ConsoleMetadata
 {
     public int Id { get; set; }
