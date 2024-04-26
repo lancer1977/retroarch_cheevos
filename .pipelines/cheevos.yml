@@ -2,7 +2,7 @@
 name: 1.0.2.$(rev:r)
 variables: 
 - name: Project.Path
-  value: '**/PolyhydraGames.Api.CDN.csproj'
+  value: '**/PolyhydraGames.RACheevos.csproj'
 - name: BuildConfiguration
   value: Release
 trigger:
