@@ -2,7 +2,7 @@
 name: 1.0.0.$(rev:r)
 variables: 
 - name: Project.Path
-  value: '**/PolyhydraGames.Api.CDN.csproj'
+  value: '**/PolyhydraGames.RACheevos.csproj'
 - name: BuildConfiguration
   value: Release
 trigger:
@@ -25,8 +25,15 @@ jobs:
       versioningScheme: 'byBuildNumber'
       arguments: '-c $(BuildConfiguration)' 
   - task: DotNetCoreCLI@2
+    enabled: false
     inputs:
       command: 'push'
       packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
       nuGetFeedType: 'internal'
       publishVstsFeed: '015fc12f-cd63-4ab4-8d6a-dc889e53bf70'
+  - task: NuGetCommand@2
+    inputs:
+      command: 'push'
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+      nuGetFeedType: 'external'
+      publishFeedCredentials: 'Nuget'
