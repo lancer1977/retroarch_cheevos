@@ -11,8 +11,7 @@
 		<Copyright>2024</Copyright>
 		<PackageProjectUrl>https://github.com/lancer1977/retroarch_cheevos</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/lancer1977/retroarch_cheevos</RepositoryUrl>
-		<RepositoryType>git</RepositoryType>
-		<AnalysisLevel>5.0-recommended</AnalysisLevel>
+		<RepositoryType>git</RepositoryType> 
 		<PackageId>PolyhydraGames.Retroarch.Cheevos</PackageId>
 		<Authors>John Doe</Authors>
 		<Company>Contoso</Company>
