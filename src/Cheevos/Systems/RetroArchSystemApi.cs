@@ -1,11 +1,9 @@
-using PolyhydraGames.RACheevos.Systems; 
-
-namespace PolyhydraGames.RACheevos.Feeds;
+namespace PolyhydraGames.RACheevos.Systems;
 
 public class RetroArchSystemApi : RestServiceBase, IRetroArchSystemApi
 {
     private List<GameAndHash> _cache;
-    public RetroArchSystemApi(IAuthConfig authConfig, HttpClient client) : base(authConfig, client) { }
+    public RetroArchSystemApi(ICheevoAuth authConfig, HttpClient client) : base(authConfig, client) { }
     public Task<IEnumerable<GameConsole>> GetConsoleIDs()
     {
         var url = GetBaseUrl();

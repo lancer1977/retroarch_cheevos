@@ -1,10 +1,10 @@
  
 
-namespace PolyhydraGames.RACheevos;
+namespace PolyhydraGames.RACheevos.Events;
 public class EventApi : RestServiceBase, IRetroArchEventApi
 { 
 
-    public EventApi(IAuthConfig authConfig, HttpClient client) : base(authConfig, client)
+    public EventApi(ICheevoAuth authConfig, HttpClient client) : base(authConfig, client)
     { 
     }
 

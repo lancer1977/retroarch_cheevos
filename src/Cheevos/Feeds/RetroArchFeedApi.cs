@@ -4,7 +4,7 @@ namespace PolyhydraGames.RACheevos.Feeds;
 
 public class RetroArchFeedApi : RestServiceBase, IRetroArchFeedApi
 {
-    public RetroArchFeedApi(IAuthConfig authConfig, HttpClient client) : base(authConfig, client) { }
+    public RetroArchFeedApi(ICheevoAuth authConfig, HttpClient client) : base(authConfig, client) { }
 
     public Task<RecentGameAwardResponse> GetRecentGameAwards(DateTime? date = null, int offset = 0, int count = 25, string kinds = null)
     {

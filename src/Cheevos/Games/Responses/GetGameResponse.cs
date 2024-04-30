@@ -1,3 +1,5 @@
+namespace PolyhydraGames.RACheevos.Games.Responses;
+
 public class GetGameResponse
 {
     public string ID { get; set; }

@@ -1,4 +1,4 @@
-namespace PolyhydraGames.RACheevos;
+namespace PolyhydraGames.RACheevos.Users.Models;
 public class UserCompletionProgressResponse
 {
     public int Count { get; set; }

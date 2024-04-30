@@ -1,4 +1,4 @@
-namespace PolyhydraGames.RACheevos;
+namespace PolyhydraGames.RACheevos.Users.Models;
 public class GameCompletion
 {
     public int GameID { get; set; }

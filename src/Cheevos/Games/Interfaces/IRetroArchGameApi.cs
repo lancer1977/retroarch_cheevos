@@ -1,4 +1,6 @@
-namespace PolyhydraGames.RACheevos; public interface IRetroArchGameApi
+using PolyhydraGames.RACheevos.Games.Responses;
+
+namespace PolyhydraGames.RACheevos.Games.Interfaces; public interface IRetroArchGameApi
 { 
     Task<GetGameResponse> GetGame(int gameID); 
     Task<GetGameExtendedResponse> GetGameExtended(int gameID, bool officialAchievements = false);

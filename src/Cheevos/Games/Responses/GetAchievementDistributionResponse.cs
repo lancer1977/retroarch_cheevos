@@ -1,1 +1,1 @@
-namespace PolyhydraGames.RACheevos; public class GetAchievementDistributionResponse : Dictionary<string, int> { }
+namespace PolyhydraGames.RACheevos.Games.Responses; public class GetAchievementDistributionResponse : Dictionary<string, int> { }

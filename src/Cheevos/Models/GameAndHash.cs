@@ -1,3 +1,5 @@
+namespace PolyhydraGames.RACheevos.Models;
+
 public class GameAndHash
 {
     public List<string> Hashes { get; set; }

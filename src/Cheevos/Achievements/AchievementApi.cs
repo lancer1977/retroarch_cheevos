@@ -1,9 +1,9 @@
-namespace PolyhydraGames.RACheevos;
+namespace PolyhydraGames.RACheevos.Achievements;
 
 public class AchievementApi : RestServiceBase, IRetroArchAchievementApi
 { 
 
-    public AchievementApi(IAuthConfig authConfig, HttpClient client) : base(authConfig, client)
+    public AchievementApi(ICheevoAuth authConfig, HttpClient client) : base(authConfig, client)
     { 
     }
 

@@ -1,10 +1,13 @@
   
-namespace PolyhydraGames.RACheevos;
+using PolyhydraGames.RACheevos.Games.Interfaces;
+using PolyhydraGames.RACheevos.Games.Responses;
+
+namespace PolyhydraGames.RACheevos.Games;
 public class RetroArchCheevoApi : RestServiceBase, IRetroArchGameApi
 {
 
 
-    public RetroArchCheevoApi(IAuthConfig authConfig, HttpClient client) : base(authConfig, client)
+    public RetroArchCheevoApi(ICheevoAuth authConfig, HttpClient client) : base(authConfig, client)
     {
     }
 

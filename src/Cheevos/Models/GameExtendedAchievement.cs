@@ -1,4 +1,6 @@
-namespace PolyhydraGames.RACheevos;
+using PolyhydraGames.RACheevos.Achievements;
+
+namespace PolyhydraGames.RACheevos.Models;
 public class GameExtendedAchievement
 {
     public int Id { get; set; }

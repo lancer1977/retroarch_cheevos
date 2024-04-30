@@ -1,4 +1,3 @@
-using Cheevos.Tickets;
 using PolyhydraGames.RACheevos.Systems;
 using RetroArchSystemApi = PolyhydraGames.RACheevos.Feeds.RetroArchSystemApi;
 

@@ -1,4 +1,4 @@
-namespace PolyhydraGames.RACheevos;
+namespace PolyhydraGames.RACheevos.Users.Models;
 public class VisibleUserAward
 {
     public DateTime AwardedAt { get; set; }

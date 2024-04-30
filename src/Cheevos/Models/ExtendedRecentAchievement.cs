@@ -1,4 +1,4 @@
-namespace PolyhydraGames.RACheevos;
+namespace PolyhydraGames.RACheevos.Models;
 public class ExtendedRecentAchievement
 {
     string ID { get; set; }

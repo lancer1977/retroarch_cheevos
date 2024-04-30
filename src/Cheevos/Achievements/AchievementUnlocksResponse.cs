@@ -1,4 +1,4 @@
-namespace PolyhydraGames.RACheevos;
+namespace PolyhydraGames.RACheevos.Achievements;
 public class AchievementUnlocksResponse
 {
     public AchievementUnlocks Achievement { get; set; }

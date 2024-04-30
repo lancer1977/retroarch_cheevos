@@ -1,21 +1,15 @@
 namespace PolyhydraGames.RACheevos;
-public interface IAuthConfig
-{
-    public string ApiKey { get; }
-    public string UserName { get; }
-
-}
 
 public class RestServiceBase
 {
-    protected IAuthConfig AuthConfig { get; set; }
+    protected ICheevoAuth AuthConfig { get; set; }
     private readonly HttpClient _client;
     public const string BaseUrl = "https://retroachievements.org/API";
     protected string GetBaseUrl([CallerMemberName] string memberName = "")
     {
         return BaseUrl + "/API_" + memberName + ".php?y=" + AuthConfig.ApiKey + "&z=" + AuthConfig.UserName;
     }
-    public RestServiceBase(IAuthConfig config, HttpClient client)
+    public RestServiceBase(ICheevoAuth config, HttpClient client)
     {
         AuthConfig = config;
         _client = client;
@@ -68,11 +62,8 @@ public class RestServiceBase
                 Debug.WriteLine(responseString);
                 Debug.WriteLine(ex.ToString());
             }
-        }
+        } 
 
-        //client = (HttpClient)null;
-    
-        
         if (httpResponseMessage.StatusCode == HttpStatusCode.Unauthorized)
             throw this.OnUnauthorized();
         throw new Exception(httpResponseMessage.StatusCode.ToString() + ":" + httpResponseMessage.ReasonPhrase);

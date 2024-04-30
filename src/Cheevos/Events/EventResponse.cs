@@ -1,4 +1,4 @@
-namespace PolyhydraGames.RACheevos;
+namespace PolyhydraGames.RACheevos.Events;
 public class EventResponse
 {
     public Achievement Achievement { get; set; }

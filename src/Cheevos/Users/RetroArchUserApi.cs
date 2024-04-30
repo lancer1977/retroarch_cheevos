@@ -1,11 +1,12 @@
+using PolyhydraGames.RACheevos.Games.Responses;
+using PolyhydraGames.RACheevos.Users.Models;
 
-using PolyhydraGames.RACheevos;
-namespace PolyhydraGames.RACheevos;
+namespace PolyhydraGames.RACheevos.Users;
 
 public class RetroArchUserApi : RestServiceBase, IRetroArchUserApi
 { 
 
-    public RetroArchUserApi(IAuthConfig authConfig, HttpClient client) : base(authConfig, client) { }
+    public RetroArchUserApi(ICheevoAuth authConfig, HttpClient client) : base(authConfig, client) { }
 
 
     public Task<GameInfoAndUserProgressResponse> GetGameInfoAndUserProgress(string gameID, string userName)

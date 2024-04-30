@@ -1,4 +1,4 @@
-namespace PolyhydraGames.RACheevos;
+namespace PolyhydraGames.RACheevos.Games.Responses;
 
 
 public class GetUserSummaryResponse

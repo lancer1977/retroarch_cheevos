@@ -1,7 +1,4 @@
-using PolyhydraGames.RACheevos;
-using PolyhydraGames.RACheevos.Systems;
-
-namespace Cheevos.Tickets;
+namespace PolyhydraGames.RACheevos.Tickets;
 public interface IRetroArchTicketApi
 {
     Task<TicketData> GetTicketDataById(int id);
@@ -18,7 +15,7 @@ public interface IRetroArchTicketApi
 public class RetroArchTicketApi : RestServiceBase, IRetroArchTicketApi
 {
     private List<GameAndHash> _cache;
-    public RetroArchTicketApi(IAuthConfig authConfig, HttpClient client) : base(authConfig, client) { }
+    public RetroArchTicketApi(ICheevoAuth authConfig, HttpClient client) : base(authConfig, client) { }
     public Task<IEnumerable<GameConsole>> GetConsoleIDs()
     {
         var url = GetBaseUrl();

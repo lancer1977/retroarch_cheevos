@@ -1,4 +1,4 @@
-namespace PolyhydraGames.RACheevos; public class GameInfoAndUserProgressResponse
+namespace PolyhydraGames.RACheevos.Games.Responses; public class GameInfoAndUserProgressResponse
 {
     public string User { get; set; }
     public string MemberSince { get; set; }

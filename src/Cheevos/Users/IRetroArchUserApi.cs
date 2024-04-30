@@ -1,4 +1,7 @@
-namespace PolyhydraGames.RACheevos;
+using PolyhydraGames.RACheevos.Games.Responses;
+using PolyhydraGames.RACheevos.Users.Models;
+
+namespace PolyhydraGames.RACheevos.Users;
 
 public interface IRetroArchUserApi
     {

@@ -1,7 +1,7 @@
-namespace PolyhydraGames.RACheevos;
+namespace PolyhydraGames.RACheevos.Achievements;
 public enum AchievementType
 {
-    progression,
-    win_condition,
-    missable
+    Progression,
+    Win_condition,
+    Missable
 }

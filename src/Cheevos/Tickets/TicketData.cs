@@ -1,4 +1,4 @@
-namespace Cheevos.Tickets;
+namespace PolyhydraGames.RACheevos.Tickets;
 
 public class TicketData
 {
