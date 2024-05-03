@@ -1,3 +1,5 @@
+using PolyhydraGames.RACheevos.Users;
+
 namespace PolyhydraGames.RACheevos.Test.Apis;
 
 public class UserTests : BaseTests

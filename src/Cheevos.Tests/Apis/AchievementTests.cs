@@ -1,3 +1,5 @@
+using PolyhydraGames.RACheevos.Achievements;
+
 namespace PolyhydraGames.RACheevos.Test.Apis;
 public class AchievementTests : BaseTests
 {

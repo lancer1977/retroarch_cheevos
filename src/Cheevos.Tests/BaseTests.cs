@@ -16,7 +16,7 @@ namespace PolyhydraGames.RACheevos.Test;
                 .SetBasePath(Directory.GetCurrentDirectory()) // Set the base path to the test project
                 .AddUserSecrets("55ffaff5-0bdc-44ea-8c06-273a06fec476") // Use the UserSecretsId generated earlier
                 .Build();
-            Config = new AuthConfig()
+            Config = new DefaultAuthConfig()
             {
                 ApiKey = _configuration["ApiKey"],
                 UserName = _configuration["UserName"]

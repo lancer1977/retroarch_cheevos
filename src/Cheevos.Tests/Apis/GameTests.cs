@@ -1,3 +1,6 @@
+using PolyhydraGames.RACheevos.Games;
+using PolyhydraGames.RACheevos.Games.Interfaces;
+
 namespace PolyhydraGames.RACheevos.Test.Apis;
 
 public class GameTests : BaseTests
