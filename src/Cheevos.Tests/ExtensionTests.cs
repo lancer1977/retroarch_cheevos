@@ -1,3 +1,7 @@
+using Newtonsoft.Json;
+using System.Diagnostics;
+using PolyhydraGames.RACheevos.Models;
+
 namespace PolyhydraGames.RACheevos.Test;
 
 public class ExtensionTests
@@ -8,5 +12,5 @@ public class ExtensionTests
         var epoch = DateTime.Now.ToEpoch();
         Assert.That(epoch > 0);
     
-    } 
-}
+    }
+} 
