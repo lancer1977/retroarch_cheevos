@@ -5,9 +5,10 @@ namespace PolyhydraGames.RACheevos.Test;
     {
         private IConfiguration _configuration;
         public ICheevoAuth Config { get; set; }
-        protected string TestUser = "MaxMilyin";
-        protected int TestGameId = 14402;
-
+        protected string TestUser = "NekroG";
+        protected int TestGameId = 582545;
+    //        protected string TestUser = "MaxMilyin";
+    // protected int TestGameId = 14402;
         public BaseTests()
         {
         

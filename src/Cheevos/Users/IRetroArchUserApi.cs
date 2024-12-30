@@ -36,12 +36,13 @@ public interface IRetroArchUserApi
         //https://retroachievements.org/API/API_GetUserProgress.php?u=MaxMilyin&i=1,2,3
         Task<Dictionary<int, GameProgress>> GetUserProgress(string userName, IEnumerable<int> achievementIds);
         //https://retroachievements.org/API/API_GetUserRecentlyPlayedGames.php?u=MaxMilyin
-        Task<IEnumerable<Game>> GetUserRecentlyPlayedGames(string userName, int count = 10, int offset = 0);
+        Task<IEnumerable<RecentGame>> GetUserRecentlyPlayedGames(string userName, int count = 50);
         //https://retroachievements.org/API/API_GetUserSummary.php?u=xelnia&g=1&a=2
         //Task<GameInfoAndUserProgressResponse> GetGameInfoAndUserProgress(string gameID, string userName);
 
         Task<GetUserSummaryResponse> GetUserSummary(string userName, int gameCount = 0, int achievementCount = 10);
         //https://retroachievements.org/API/API_GetUserCompletedGames.php?u=MaxMilyin
         Task<IEnumerable<GameCompletion>> GetUserCompletedGames(string userName);
+        //Task<IEnumerable<UserRecentlyPlayedGame>> GetUserRecentlyPlayedGames(string userName);
     }
  

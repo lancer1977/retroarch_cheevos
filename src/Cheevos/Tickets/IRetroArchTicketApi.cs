@@ -36,37 +36,37 @@ public class RetroArchTicketApi : RestServiceBase, IRetroArchTicketApi
 
     public Task<TicketData> GetTicketDataById(int id)
     {
-        var url = GetBaseUrl("GetTicketData").Id(id);
+        var url = GetBaseUrl(true, "GetTicketData").Id(id);
         return Get<TicketData>(url);
     }
 
     public Task<TicketData> GetTicketData(int id, int count = 10, int offset = 0)
     {
-        var url = GetBaseUrl("GetTicketData").Id(id);
+        var url = GetBaseUrl(true, "GetTicketData").Id(id);
         return Get<TicketData>(url);
     }
 
     public Task<TicketData> GetRecentTicketData(int id, int count = 10, int offset = 0)
     {
-        var url = GetBaseUrl("GetTicketData").Id(id).Count(10).Offset(0);
+        var url = GetBaseUrl(true, "GetTicketData").Id(id).Count(10).Offset(0);
         return Get<TicketData>(url);
     }
 
     public Task<TicketData> GetGameTicketStats(int id)
     {
-        var url = GetBaseUrl("GetTicketData").Id(id);
+        var url = GetBaseUrl(true,"GetTicketData").Id(id);
         return Get<TicketData>(url);
     }
 
     public Task<TicketData> GetDeveloperTicketData(string developerUsername)
     {
-        var url = GetBaseUrl("GetTicketData").ParamString("u", developerUsername);
+        var url = GetBaseUrl(true, "GetTicketData").ParamString("u", developerUsername);
         return Get<TicketData>(url);
     }
 
     public Task<TicketData> GetAchievementTicketData(int achievementId)
     {
-        var url = GetBaseUrl("GetTicketData").Id(achievementId);
+        var url = GetBaseUrl(true, "GetTicketData").Id(achievementId);
         return Get<TicketData>(url);
     }
 }

@@ -1,13 +1,29 @@
 namespace PolyhydraGames.RACheevos;
+public class CustomDateFormatConverter : System.Text.Json.Serialization.JsonConverter<DateTime>
+{
+    private readonly string dateFormat = "yyyy-MM-dd HH:mm:ss";
+
+    public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        string dateString = reader.GetString();
+        return DateTime.ParseExact(dateString, dateFormat, null);
+    }
+
+    public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
+    {
+        writer.WriteStringValue(value.ToString(dateFormat));
+    }
+}
 
 public class RestServiceBase
 {
     protected ICheevoAuth AuthConfig { get; set; }
     private readonly HttpClient _client;
     public const string BaseUrl = "https://retroachievements.org/API";
-    protected string GetBaseUrl([CallerMemberName] string memberName = "")
+    protected string GetBaseUrl(bool injectUser = true,[CallerMemberName] string memberName = "")
     {
-        return BaseUrl + "/API_" + memberName + ".php?y=" + AuthConfig.ApiKey + "&z=" + AuthConfig.UserName;
+        return BaseUrl + "/API_" + memberName + ".php?y=" + AuthConfig.ApiKey +
+               (injectUser ? "&z=" + AuthConfig.UserName : "");
     }
     public RestServiceBase(ICheevoAuth config, HttpClient client)
     {
@@ -20,7 +36,8 @@ public class RestServiceBase
 
     protected JsonSerializerOptions Options { get; set; } = new JsonSerializerOptions()
     {
-        PropertyNameCaseInsensitive = true
+        PropertyNameCaseInsensitive = true,
+        Converters = { new CustomDateFormatConverter() }
     };
 
  
@@ -61,6 +78,7 @@ public class RestServiceBase
             {
                 Debug.WriteLine(responseString);
                 Debug.WriteLine(ex.ToString());
+                throw;
             }
         } 
 

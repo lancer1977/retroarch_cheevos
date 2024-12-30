@@ -1,24 +1,48 @@
 using PolyhydraGames.RACheevos.Games.Responses;
 using PolyhydraGames.RACheevos.Users.Models;
+using System;
 
 namespace PolyhydraGames.RACheevos.Users;
 
 public class RetroArchUserApi : RestServiceBase, IRetroArchUserApi
-{ 
+{
 
     public RetroArchUserApi(ICheevoAuth authConfig, HttpClient client) : base(authConfig, client) { }
 
+    public async Task<IEnumerable<UserRecentlyPlayedGame>> GetUserRecentlyPlayedGames(string userName)
+    {
+        var url = GetBaseUrl() + $"&u={userName}&c=50";
+        return await Get<List<UserRecentlyPlayedGame>>(url);
+    }
 
     public Task<GameInfoAndUserProgressResponse> GetGameInfoAndUserProgress(string gameID, string userName)
     {
-        var url = GetBaseUrl() + $"&g={gameID}&u={userName}";
+        var url = GetBaseUrl() + $"&u={userName}";
         return Get<GameInfoAndUserProgressResponse>(url);
     }
+    public async Task<IEnumerable<RecentGame>> GetUserRecentlyPlayedGames(string userName, int count = 50)
+    {
+        if (count > 50)
+        {
+            var items = new List<RecentGame>();
+            var offset = 0;
+            while (items.Count < count)
+            {
+                var result = await GetUserRecentlyPlayedGames(userName, 50, offset);
+                items.AddRange(result);
+                offset += 50;
+            }
 
-    public Task<IEnumerable<Game>> GetUserRecentlyPlayedGames(string userName, int count = 10, int offset = 0)
+            return items;
+        }
+
+        return await GetUserRecentlyPlayedGames(userName, count, 0);
+    }
+
+    private Task<IEnumerable<RecentGame>> GetUserRecentlyPlayedGames(string userName, int count, int offset)
     {
         var url = GetBaseUrl() + $"&u={userName}&c={count}&o={offset}";
-        return Get<IEnumerable<Game>>(url);
+        return Get<IEnumerable<RecentGame>>(url);
     }
 
     public Task<GetUserSummaryResponse> GetUserSummary(string userName, int gameCount = 0,
@@ -34,10 +58,19 @@ public class RetroArchUserApi : RestServiceBase, IRetroArchUserApi
         return Get<IEnumerable<GameCompletion>>(url);
     }
 
-    public Task<UserProfile> GetUserProfile(string userName)
+    public async Task<UserProfile> GetUserProfile(string userName)
     {
-        var url = GetBaseUrl() + $"&u={userName}";
-        return Get<UserProfile>(url);
+        var url = GetBaseUrl(false).ParamString("u", userName);
+        try
+        {
+            var result = await Get<UserProfile>(url);
+            return result;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            throw;
+        }
     }
 
 
@@ -65,7 +98,7 @@ public class RetroArchUserApi : RestServiceBase, IRetroArchUserApi
         return Get<GameInfoAndUserProgressResponse>(url);
     }
 
- 
+
 
     public Task<UserCompletionProgressResponse> GetUserCompletionProgress(string userName, int count, int offset)
     {

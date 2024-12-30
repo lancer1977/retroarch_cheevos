@@ -1,3 +1,9 @@
+using System;
+using System.Diagnostics;
+using System.Text;
+using Microsoft.Extensions.Primitives;
+using PolyhydraGames.Core.Models;
+using PolyhydraGames.RACheevos.Models;
 using PolyhydraGames.RACheevos.Users;
 
 namespace PolyhydraGames.RACheevos.Test.Apis;
@@ -15,6 +21,7 @@ public class UserTests : BaseTests
     public async Task GetUserProfile()
     {
         var result = await Api.GetUserProfile(TestUser);
+        Console.WriteLine(result.ToJson());
         Assert.That(result.User == TestUser);
     }
 
@@ -22,6 +29,7 @@ public class UserTests : BaseTests
     public async Task GetUserRecentAchievements()
     {
         var result = await Api.GetUserRecentAchievements(TestUser, 100011);
+        Console.WriteLine(result.ToJson());
         Assert.That(result.Any());
     }
 
@@ -90,14 +98,67 @@ public class UserTests : BaseTests
     [Test]
     public async Task GetUserRecentlyPlayedGames()
     {
-        var result = await Api.GetUserRecentlyPlayedGames(TestUser);
+        var resultEnum = await Api.GetUserRecentlyPlayedGames(TestUser, 1000);
+        var result = resultEnum.ToList();
+        var count = result.Count;
+        //Console.WriteLine(result.ToJson());
+        for (var x = 1; x <= count; x++)
+        {
+            Console.WriteLine(GetRecentGameHtml(x, result[x-1]));
+         //   Console.WriteLine(GameMarkdownCell(x, result[x]));
+        }
         Assert.That(result.Any());
+    }
+ 
+        public static string GetRecentGameHtml(int count, RecentGame item)
+        {
+        // Define variables
+        var index = count;
+        var imageSrc1 = item.ImageIcon;
+        var date = item.LastPlayed;
+        var imageSrc2 = item.ImageBoxArt;
+        var gameName = item.Title;
+        var gameUrl = $"https://retroachievements.org/game/{item.GameID}";
+
+        // Create a StringBuilder to construct the HTML
+        var html = new StringBuilder();
+
+        // Append the HTML structure
+        html.Append("<tr>\n");
+        html.Append("    <td>").Append(index).Append("</td>\n");
+        html.Append("    <td><a href=\"").Append(gameUrl).Append("\">").Append(gameName).Append("</a></td>\n");
+        html.Append("    <td><img height=\"120\" src=\"https://media.retroachievements.org/").Append(imageSrc1).Append("\"></td>\n");
+        html.Append("    <td>").Append(date).Append("</td>\n");
+        html.Append("    <td><img height=\"120\" src=\"https://media.retroachievements.org/").Append(imageSrc2).Append("\"></td>\n");
+        
+        html.Append("</tr>\n");
+        return html.ToString();
+        }
+    
+
+    private string GameMarkdownCell(int count, RecentGame item)
+    {
+        var builder = new StringBuilder();
+        
+        builder.Append("| " + count + "|");
+        //Console.WriteLine(item.ToJson());
+        var image = "<img height=\"120\" src=\"https://media.retroachievements.org" + item.ImageIcon + "\"> |";
+        builder.Append(image);
+        var lastPlayed = item.LastPlayed + " | ";
+        builder.Append(lastPlayed);
+
+        var link = "<a href=\"https://retroachievements.org/game/" + item.GameID + "\" >" + item.Title + "</a> |";
+        var boximage = "<img height=\"120\" src=\"https://media.retroachievements.org" + item.ImageBoxArt + "\"> |";
+        builder.Append(boximage);
+        builder.Append(link);
+        return builder.ToString();
     }
 
     [Test]
     public async Task GetUserSummary()
     {
         var result = await Api.GetUserSummary(TestUser);
+        Debug.WriteLine(result.ToJson());
         Assert.That(result.Rank > 0);
     }
 
