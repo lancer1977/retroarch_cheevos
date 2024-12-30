@@ -6,7 +6,15 @@ public class CustomDateFormatConverter : System.Text.Json.Serialization.JsonConv
     public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         string dateString = reader.GetString();
-        return DateTime.ParseExact(dateString, dateFormat, null);
+        try
+        {
+            return DateTime.Parse(dateString);
+        }
+        catch (Exception ex)
+        {
+            return DateTime.ParseExact(dateString, dateFormat, null);
+        }
+
     }
 
     public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
@@ -20,10 +28,12 @@ public class RestServiceBase
     protected ICheevoAuth AuthConfig { get; set; }
     private readonly HttpClient _client;
     public const string BaseUrl = "https://retroachievements.org/API";
-    protected string GetBaseUrl(bool injectUser = true,[CallerMemberName] string memberName = "")
+    protected string GetBaseUrl([CallerMemberName] string memberName = "")
     {
-        return BaseUrl + "/API_" + memberName + ".php?y=" + AuthConfig.ApiKey +
-               (injectUser ? "&z=" + AuthConfig.UserName : "");
+        var url = BaseUrl + "/API_" + memberName + ".php?";
+        return url.ApiKey(AuthConfig.ApiKey);
+
+        //+(injectUser ? "&z=" + AuthConfig.UserName : "");
     }
     public RestServiceBase(ICheevoAuth config, HttpClient client)
     {

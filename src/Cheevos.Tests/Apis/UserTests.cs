@@ -55,7 +55,7 @@ public class UserTests : BaseTests
     [Test]
     public async Task GetGameInfoAndUserProgress()
     {
-        var result = await Api.GetGameInfoAndUserProgress(TestUser, TestGameId);
+        var result = await Api.GetGameInfoAndUserProgress("dreadbreadcrumb",TestUser, TestGameId);
     }
     [Test]
     public async Task GetUserCompletionProgress()

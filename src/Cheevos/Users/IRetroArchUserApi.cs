@@ -16,8 +16,7 @@ public interface IRetroArchUserApi
         Task<IEnumerable<Achievement>> GetAchievementsEarnedOnDay(string userName, DateTime day);
 
         //https://retroachievements.org/API/API_GetGameInfoAndUserProgress.php?g=14402&u=MaxMilyin
-        Task<GameInfoAndUserProgressResponse> GetGameInfoAndUserProgress(string userName, int gameId);
-
+        Task<GameInfoAndUserProgressResponse> GetGameInfoAndUserProgress(string authUser, string userName, int gameId);
         //https://retroachievements.org/API/API_GetUserCompletionProgress.php?u=MaxMilyin  &c=100&o=0
         Task<UserCompletionProgressResponse> GetUserCompletionProgress(string userName, int count=100, int offset=0);
 

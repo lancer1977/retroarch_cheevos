@@ -15,7 +15,7 @@ public class GetGameExtendedResponse
     public string Developer { get; set; }
     public string Genre { get; set; }
     public string Released { get; set; }
-    public int IsFinal { get; set; }
+    public bool IsFinal { get; set; }
     public string ConsoleName { get; set; }
     public string RichPresencePatch { get; set; }
     public int NumAchievements { get; set; }

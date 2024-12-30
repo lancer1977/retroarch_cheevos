@@ -20,7 +20,7 @@ public class RetroArchCheevoApi : RestServiceBase, IRetroArchGameApi
     public Task<GetGameExtendedResponse> GetGameExtended(int gameId, bool officialAchievements = true)
     {
         var code = officialAchievements ? "3" : "5";
-        var url = GetBaseUrl() + $"&i={gameId}&f={code}";
+        var url = GetBaseUrl().Id(gameId).ParamString("f", code);
         return Get<GetGameExtendedResponse>(url);
     }
 
