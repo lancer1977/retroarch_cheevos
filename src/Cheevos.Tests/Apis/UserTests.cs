@@ -14,7 +14,7 @@ public class UserTests : BaseTests
 
     public UserTests()
     {
-        Api = new RetroArchUserApi(Config, new HttpClient());
+        Api = new RetroArchUserApi(Config, new HttpClient(), null);
     }
 
     [Test]
@@ -55,7 +55,7 @@ public class UserTests : BaseTests
     [Test]
     public async Task GetGameInfoAndUserProgress()
     {
-        var result = await Api.GetGameInfoAndUserProgress("dreadbreadcrumb",TestUser, TestGameId);
+        var result = await Api.GetGameInfoAndUserProgress("dreadbreadcrumb", TestUser, TestGameId);
     }
     [Test]
     public async Task GetUserCompletionProgress()
@@ -104,14 +104,14 @@ public class UserTests : BaseTests
         //Console.WriteLine(result.ToJson());
         for (var x = 1; x <= count; x++)
         {
-            Console.WriteLine(GetRecentGameHtml(x, result[x-1]));
-         //   Console.WriteLine(GameMarkdownCell(x, result[x]));
+            Console.WriteLine(GetRecentGameHtml(x, result[x - 1]));
+            //   Console.WriteLine(GameMarkdownCell(x, result[x]));
         }
         Assert.That(result.Any());
     }
- 
-        public static string GetRecentGameHtml(int count, RecentGame item)
-        {
+
+    public static string GetRecentGameHtml(int count, RecentGame item)
+    {
         // Define variables
         var index = count;
         var imageSrc1 = item.ImageIcon;
@@ -130,16 +130,16 @@ public class UserTests : BaseTests
         html.Append("    <td><img height=\"120\" src=\"https://media.retroachievements.org/").Append(imageSrc1).Append("\"></td>\n");
         html.Append("    <td>").Append(date).Append("</td>\n");
         html.Append("    <td><img height=\"120\" src=\"https://media.retroachievements.org/").Append(imageSrc2).Append("\"></td>\n");
-        
+
         html.Append("</tr>\n");
         return html.ToString();
-        }
-    
+    }
+
 
     private string GameMarkdownCell(int count, RecentGame item)
     {
         var builder = new StringBuilder();
-        
+
         builder.Append("| " + count + "|");
         //Console.WriteLine(item.ToJson());
         var image = "<img height=\"120\" src=\"https://media.retroachievements.org" + item.ImageIcon + "\"> |";

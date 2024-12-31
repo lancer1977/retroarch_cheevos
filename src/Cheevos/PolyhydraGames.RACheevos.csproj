@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net8.0</TargetFrameworks>
@@ -17,6 +17,11 @@
 		<Company>Contoso</Company>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="PolyhydraGames.Core.Interfaces" Version="2.0.0.41" />
+	</ItemGroup>
+
+ 
 	<ItemGroup>
 	  <PackageReference Update="SonarAnalyzer.CSharp" Version="10.4.0.108396" />
 	</ItemGroup>

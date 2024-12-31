@@ -1,25 +1,38 @@
 using PolyhydraGames.RACheevos.Games.Responses;
 using PolyhydraGames.RACheevos.Users.Models;
 using System;
+using PolyhydraGames.Core.Interfaces;
 
 namespace PolyhydraGames.RACheevos.Users;
 
 public class RetroArchUserApi : RestServiceBase, IRetroArchUserApi
 {
+    private readonly ICacheService? _redis;
 
-    public RetroArchUserApi(ICheevoAuth authConfig, HttpClient client) : base(authConfig, client) { }
+    public RetroArchUserApi(ICheevoAuth authConfig, HttpClient client, ICacheService? redis) : base(authConfig, client)
+    {
+        _redis = redis;
+    }
 
     public Task<GameInfoAndUserProgressResponse> GetGameInfoAndUserProgress(string gameID, string userName)
     {
         var url = GetBaseUrl().User(userName).GameID(gameID);
         return Get<GameInfoAndUserProgressResponse>(url);
-    } 
+    }
 
     public async Task<IEnumerable<RecentGame>> GetUserRecentlyPlayedGames(string userName, int count = 50)
     {
+        var key = nameof(GetUserRecentlyPlayedGames) + userName;
+        return await (_redis?.Get(key, async () => await GetUserRecentlyPlayedGamesFunc(userName, count)) ??
+                      GetUserRecentlyPlayedGamesFunc(userName, count));
+
+    }
+
+    public async Task<List<RecentGame>> GetUserRecentlyPlayedGamesFunc(string userName, int count = 50)
+    {
+        var items = new List<RecentGame>();
         if (count > 50)
         {
-            var items = new List<RecentGame>();
             var offset = 0;
             while (items.Count < count)
             {
@@ -30,8 +43,9 @@ public class RetroArchUserApi : RestServiceBase, IRetroArchUserApi
 
             return items;
         }
+        var smallresult = await GetUserRecentlyPlayedGames(userName, count, 0);
+        return smallresult.ToList();
 
-        return await GetUserRecentlyPlayedGames(userName, count, 0);
     }
 
     private Task<IEnumerable<RecentGame>> GetUserRecentlyPlayedGames(string userName, int count, int offset)
@@ -89,7 +103,7 @@ public class RetroArchUserApi : RestServiceBase, IRetroArchUserApi
 
     public Task<GameInfoAndUserProgressResponse> GetGameInfoAndUserProgress(string authUser, string userName, int gameId)
     {
-        var url = GetBaseUrl().User(userName).GameID(gameId).AuthUser(authUser).ParamString("a","1");
+        var url = GetBaseUrl().User(userName).GameID(gameId).AuthUser(authUser).ParamString("a", "1");
         return Get<GameInfoAndUserProgressResponse>(url);
     }
 
