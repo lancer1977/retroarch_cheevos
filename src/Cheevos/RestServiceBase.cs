@@ -31,9 +31,7 @@ public class RestServiceBase
     protected string GetBaseUrl([CallerMemberName] string memberName = "")
     {
         var url = BaseUrl + "/API_" + memberName + ".php?";
-        return url.ApiKey(AuthConfig.ApiKey);
-
-        //+(injectUser ? "&z=" + AuthConfig.UserName : "");
+        return url.ApiKey(AuthConfig.ApiKey).AuthUser(AuthConfig.UserName); 
     }
     public RestServiceBase(ICheevoAuth config, HttpClient client)
     {
