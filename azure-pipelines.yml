@@ -1,5 +1,5 @@
 # Starter pipeline
-name: 1.0.1.$(rev:r)
+name: 1.0.0.$(rev:r)
 variables: 
 - name: Project.Path
   value: '**/PolyhydraGames.RACheevos.csproj'
@@ -24,15 +24,10 @@ jobs:
       packagesToPack: '$(Project.Path)' 
       versioningScheme: 'byBuildNumber'
       arguments: '-c $(BuildConfiguration)' 
-  - task: DotNetCoreCLI@2 
+
+  - task: NuGetCommand@2
     inputs:
       command: 'push'
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-      nuGetFeedType: 'internal'
-      publishVstsFeed: '015fc12f-cd63-4ab4-8d6a-dc889e53bf70'
-  - task: DotNetCoreCLI@2
-    inputs:
-      command: 'push'
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
       nuGetFeedType: 'external'
-      publishFeedCredentials: 'Nuget.org'
+      publishFeedCredentials: 'Nuget'
