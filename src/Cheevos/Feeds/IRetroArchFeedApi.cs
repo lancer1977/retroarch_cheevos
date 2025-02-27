@@ -1,5 +1,3 @@
-using System;
-
 namespace PolyhydraGames.RACheevos.Feeds;
 
 public interface IRetroArchFeedApi

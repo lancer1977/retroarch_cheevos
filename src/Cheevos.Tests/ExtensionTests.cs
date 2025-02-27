@@ -1,7 +1,3 @@
-using Newtonsoft.Json;
-using System.Diagnostics;
-using PolyhydraGames.RACheevos.Models;
-
 namespace PolyhydraGames.RACheevos.Test;
 
 public class ExtensionTests

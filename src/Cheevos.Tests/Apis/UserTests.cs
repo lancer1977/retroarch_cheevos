@@ -1,7 +1,5 @@
-using System;
 using System.Diagnostics;
 using System.Text;
-using Microsoft.Extensions.Primitives;
 using PolyhydraGames.Core.Models;
 using PolyhydraGames.RACheevos.Models;
 using PolyhydraGames.RACheevos.Users;
