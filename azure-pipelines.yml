@@ -26,9 +26,17 @@ jobs:
       arguments: '-c $(BuildConfiguration)' 
 
   - task: DotNetCoreCLI@2
+    enabled: false
     inputs:
+     
       command: 'push'
       packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+      nuGetFeedType: 'external'
+      publishFeedCredentials: 'Nuget.org'
+  - task: NuGetCommand@2
+    inputs:
+      command: 'push'
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
       nuGetFeedType: 'external'
       publishFeedCredentials: 'Nuget.org'
   - task: DotNetCoreCLI@2
