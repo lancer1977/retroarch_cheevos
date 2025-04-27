@@ -7,6 +7,6 @@ public class ExtensionTests
     {
         var epoch = DateTime.Now.ToEpoch();
         Assert.That(epoch > 0);
-    
+
     }
-} 
+}

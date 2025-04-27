@@ -87,5 +87,5 @@ public class TicketData
 
     [JsonPropertyName("Total")]
     public int? Total { get; set; }
-         
+
 }

@@ -1,5 +1,5 @@
-using System.Diagnostics;
 using PolyhydraGames.RACheevos.Events;
+using System.Diagnostics;
 
 namespace PolyhydraGames.RACheevos.Test.Apis;
 
@@ -11,7 +11,7 @@ public class EventTests : BaseTests
     {
         Api = new EventApi(Config, new HttpClient());
     }
-    
+
     [Test]
     public async Task GetAchievementUnlocks()
     {

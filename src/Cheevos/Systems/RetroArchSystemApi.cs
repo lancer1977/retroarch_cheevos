@@ -9,11 +9,11 @@ public class RetroArchSystemApi : RestServiceBase, IRetroArchSystemApi
         var url = GetBaseUrl();
         return Get<IEnumerable<GameConsole>>(url);
     }
-    
-    public async Task<IEnumerable<GameAndHash>> GetGameList(int systemId, bool gamesWithAchievementsOnly = false, bool returnHashes = false, bool resetCache = false )
+
+    public async Task<IEnumerable<GameAndHash>> GetGameList(int systemId, bool gamesWithAchievementsOnly = false, bool returnHashes = false, bool resetCache = false)
     {
         if (_cache != null) return _cache;
-        var url = GetBaseUrl().Id(systemId).ParamBool("f",gamesWithAchievementsOnly).ParamBool("h",returnHashes);
+        var url = GetBaseUrl().Id(systemId).ParamBool("f", gamesWithAchievementsOnly).ParamBool("h", returnHashes);
         var result = await Get<IEnumerable<GameAndHash>>(url);
         if (result != null && result.Any()) ;
         {

@@ -1,5 +1,5 @@
 using PolyhydraGames.RACheevos.Systems;
-using PolyhydraGames.RACheevos.Tickets; 
+using PolyhydraGames.RACheevos.Tickets;
 
 namespace PolyhydraGames.RACheevos.Test.Apis;
 
@@ -61,7 +61,7 @@ public class TicketTests : BaseTests
 
     }
 
-     
+
 }
 
 public class SystemTests : BaseTests

@@ -37,7 +37,7 @@ public class RestServiceBase
     protected string GetBaseUrl([CallerMemberName] string memberName = "")
     {
         var url = BaseUrl + "/API_" + memberName + ".php?";
-        return url.ApiKey(AuthConfig.ApiKey).AuthUser(AuthConfig.UserName); 
+        return url.ApiKey(AuthConfig.ApiKey).AuthUser(AuthConfig.UserName);
     }
     public RestServiceBase(ICheevoAuth config, HttpClient client)
     {
@@ -54,7 +54,7 @@ public class RestServiceBase
         Converters = { new CustomDateFormatConverter() }
     };
 
- 
+
 
     protected Uri Uri(string query)
     {
@@ -94,7 +94,7 @@ public class RestServiceBase
                 Debug.WriteLine(ex.ToString());
                 throw;
             }
-        } 
+        }
 
         if (httpResponseMessage.StatusCode == HttpStatusCode.Unauthorized)
             throw this.OnUnauthorized();

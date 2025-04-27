@@ -1,6 +1,6 @@
+using PolyhydraGames.Core.Interfaces;
 using PolyhydraGames.RACheevos.Games.Responses;
 using PolyhydraGames.RACheevos.Users.Models;
-using PolyhydraGames.Core.Interfaces;
 
 namespace PolyhydraGames.RACheevos.Users;
 

@@ -1,18 +1,17 @@
- 
+
 
 namespace PolyhydraGames.RACheevos.Events;
 public class EventApi : RestServiceBase, IRetroArchEventApi
-{ 
+{
 
     public EventApi(ICheevoAuth authConfig, HttpClient client) : base(authConfig, client)
-    { 
+    {
     }
 
 
     public Task<EventResponse> GetAchievementOfTheWeek()
     {
-        var url = GetBaseUrl()  ;
+        var url = GetBaseUrl();
         return Get<EventResponse>(url);
     }
 }
- 

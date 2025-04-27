@@ -1,4 +1,4 @@
-  
+
 using PolyhydraGames.RACheevos.Games.Interfaces;
 using PolyhydraGames.RACheevos.Games.Responses;
 

@@ -11,4 +11,4 @@ public class ExtendedRecentAchievement
     string IsAwarded { get; set; }
     string DateAwarded { get; set; }
     string HardcoreAchieved { get; set; }
-} 
+}

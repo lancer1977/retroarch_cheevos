@@ -19,7 +19,7 @@ public class GameInfoAndUserProgressResponse
     public int Rank { get; set; }
     public int RecentlyPlayedCount { get; set; }
     public List<RecentlyPlayed> RecentlyPlayed { get; set; }
-    public Dictionary<int,Achievement> Awarded { get; set; }
+    public Dictionary<int, Achievement> Awarded { get; set; }
     //public RecentAchievements RecentAchievements { get; set; }
     public LastGame LastGame { get; set; }
     public string UserPic { get; set; }

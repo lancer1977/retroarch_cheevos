@@ -42,13 +42,13 @@ public class RetroArchTicketApi : RestServiceBase, IRetroArchTicketApi
 
     public Task<TicketData> GetTicketData(int id, int count = 10, int offset = 0)
     {
-        var url = GetBaseUrl( ).Id(id);
+        var url = GetBaseUrl().Id(id);
         return Get<TicketData>(url);
     }
 
     public Task<TicketData> GetRecentTicketData(int id, int count = 10, int offset = 0)
     {
-        var url = GetBaseUrl( "GetTicketData").Id(id).Count(10).Offset(0);
+        var url = GetBaseUrl("GetTicketData").Id(id).Count(10).Offset(0);
         return Get<TicketData>(url);
     }
 
@@ -60,7 +60,7 @@ public class RetroArchTicketApi : RestServiceBase, IRetroArchTicketApi
 
     public Task<TicketData> GetDeveloperTicketData(string developerUsername)
     {
-        var url = GetBaseUrl( "GetTicketData").ParamString("u", developerUsername);
+        var url = GetBaseUrl("GetTicketData").ParamString("u", developerUsername);
         return Get<TicketData>(url);
     }
 
