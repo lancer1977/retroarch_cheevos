@@ -18,12 +18,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="PolyhydraGames.Core.Interfaces" Version="2.0.0.41" />
+	  <PackageReference Include="PolyhydraGames.Core.Interfaces" Version="2.0.0.43" />
 	</ItemGroup>
 
  
 	<ItemGroup>
-	  <PackageReference Update="SonarAnalyzer.CSharp" Version="10.8.0.113526" />
+	  <PackageReference Update="SonarAnalyzer.CSharp" Version="10.9.0.115408" />
 	</ItemGroup>
 
  

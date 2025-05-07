@@ -25,7 +25,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
-    <PackageReference Include="PolyhydraGames.Core.Models" Version="1.0.1.9" />
+    <PackageReference Include="PolyhydraGames.Core.Models" Version="1.0.1.10" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="SonarAnalyzer.CSharp" Version="10.8.0.113526" />
+    <PackageReference Update="SonarAnalyzer.CSharp" Version="10.9.0.115408" />
   </ItemGroup>
 
 
