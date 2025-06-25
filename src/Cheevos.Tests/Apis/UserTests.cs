@@ -3,6 +3,7 @@ using PolyhydraGames.RACheevos.Models;
 using PolyhydraGames.RACheevos.Users;
 using System.Diagnostics;
 using System.Text;
+using PolyhydraGames.RACheevos.Users.Models;
 
 namespace PolyhydraGames.RACheevos.Test.Apis;
 

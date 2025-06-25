@@ -78,7 +78,11 @@ public class SystemTests : BaseTests
     public async Task GetConsoleIDs()
     {
         var result = await Api.GetConsoleIDs();
-        Assert.That(result != null);
+        foreach (var system in result)
+        {
+            Console.WriteLine($"{system.Id}: {system.Name}");
+        }
+        Assert.That(result.Any());
 
     }
 

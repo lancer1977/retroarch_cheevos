@@ -53,8 +53,7 @@ public class RetroArchUserApi : RestServiceBase, IRetroArchUserApi
         return Get<IEnumerable<RecentGame>>(url);
     }
 
-    public Task<GetUserSummaryResponse> GetUserSummary(string userName, int gameCount = 0,
-        int achievementCount = 10)
+    public Task<GetUserSummaryResponse> GetUserSummary(string userName, int gameCount = 0, int achievementCount = 10)
     {
         var url = GetBaseUrl().User(userName) + $"&g={gameCount}&a={achievementCount}";
         return Get<GetUserSummaryResponse>(url);
@@ -106,8 +105,6 @@ public class RetroArchUserApi : RestServiceBase, IRetroArchUserApi
         return Get<GameInfoAndUserProgressResponse>(url);
     }
 
-
-
     public Task<UserCompletionProgressResponse> GetUserCompletionProgress(string userName, int count, int offset)
     {
         var url = GetBaseUrl().User(userName).Count(count).Offset(offset);// + $"&u={userName}&c={count}&o={offset}";
@@ -126,7 +123,7 @@ public class RetroArchUserApi : RestServiceBase, IRetroArchUserApi
         return Get<IEnumerable<UserClaim>>(url);
     }
 
-    public Task<IEnumerable<UserDetails>> GetUserGameRankAndScore(string userName, int gameId)
+    public Task<IEnumerable<UserDetails>?> GetUserGameRankAndScore(string userName, int gameId)
     {
         var url = GetBaseUrl().User(userName).GameID(gameId);
         return Get<IEnumerable<UserDetails>>(url);

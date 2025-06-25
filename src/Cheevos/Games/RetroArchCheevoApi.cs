@@ -5,16 +5,21 @@ using PolyhydraGames.RACheevos.Games.Responses;
 namespace PolyhydraGames.RACheevos.Games;
 public class RetroArchCheevoApi : RestServiceBase, IRetroArchGameApi
 {
-
+    public Dictionary<int, GetGameResponse> GameCache = new();
 
     public RetroArchCheevoApi(ICheevoAuth authConfig, HttpClient client) : base(authConfig, client)
     {
     }
 
-    public Task<GetGameResponse> GetGame(int gameId)
+    public async ValueTask<GetGameResponse> GetGame(int gameId)
     {
+        if (GameCache.TryGetValue(gameId, out var game))
+            return game;
         var url = GetBaseUrl() + $"&i={gameId}";
-        return Get<GetGameResponse>(url);
+        var result = await Get<GetGameResponse>(url);
+        if (result != null && !string.IsNullOrEmpty(result.Title))
+            GameCache[gameId] = result;
+        return result;
     }
 
     public Task<GetGameExtendedResponse> GetGameExtended(int gameId, bool officialAchievements = true)

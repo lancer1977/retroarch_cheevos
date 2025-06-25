@@ -1,34 +1,5 @@
 namespace PolyhydraGames.RACheevos;
 
-public static class Urls
-{
-    public static string SystemImagePrefix_32x = "https://static.retroachievements.org/assets/images/system/32x.png";
-    public static string GameLink = "https://retroachievements.org/game/";
-}
-public class CustomDateFormatConverter : System.Text.Json.Serialization.JsonConverter<DateTime>
-{
-    private readonly string dateFormat = "yyyy-MM-dd HH:mm:ss";
-
-    public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-    {
-        string dateString = reader.GetString();
-        try
-        {
-            return DateTime.Parse(dateString);
-        }
-        catch (Exception ex)
-        {
-            return DateTime.ParseExact(dateString, dateFormat, null);
-        }
-
-    }
-
-    public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
-    {
-        writer.WriteStringValue(value.ToString(dateFormat));
-    }
-}
-
 public class RestServiceBase
 {
     protected ICheevoAuth AuthConfig { get; set; }
@@ -74,7 +45,7 @@ public class RestServiceBase
             : "AuthRequired was not enabled, but the endpoint claims that authorization is required. Did you miss setting AuthRequired?");
     }
 
-    protected async Task<T> Get<T>(string url)
+    protected async Task<T?> Get<T>(string url)
     {
         Debug.WriteLine(url);
         HttpClient client = this._client;

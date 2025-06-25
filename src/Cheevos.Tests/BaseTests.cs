@@ -6,9 +6,7 @@ public abstract class BaseTests
     private IConfiguration _configuration;
     public ICheevoAuth Config { get; set; }
     protected string TestUser = "NekroG";
-    protected int TestGameId = 582545;
-    //        protected string TestUser = "MaxMilyin";
-    // protected int TestGameId = 14402;
+    protected int TestGameId = 582545; 
     public BaseTests()
     {
 
@@ -17,6 +15,7 @@ public abstract class BaseTests
             .SetBasePath(Directory.GetCurrentDirectory()) // Set the base path to the test project
             .AddUserSecrets("55ffaff5-0bdc-44ea-8c06-273a06fec476") // Use the UserSecretsId generated earlier
             .Build();
+
         Config = new DefaultAuthConfig()
         {
             ApiKey = _configuration["ApiKey"],

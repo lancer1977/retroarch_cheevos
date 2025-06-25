@@ -27,7 +27,7 @@ public interface IRetroArchUserApi
     Task<IEnumerable<UserClaim>> GetUserClaims(string userName);
 
     //https://retroachievements.org/API/API_GetUserGameRankAndScore.php?g=14402&u=WCopeland
-    Task<IEnumerable<UserDetails>> GetUserGameRankAndScore(string userName, int gameId);
+    Task<IEnumerable<UserDetails>?> GetUserGameRankAndScore(string userName, int gameId);
 
     //https://retroachievements.org/API/API_GetUserPoints.php?u=Hexadigital
     Task<UserPoints> GetUserPoints(string userName);
