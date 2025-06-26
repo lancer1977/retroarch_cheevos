@@ -1,5 +1,19 @@
 namespace PolyhydraGames.RACheevos;
 
+public static class Media
+{
+    public static string BadgeUrl(int id, bool locked = false)
+    {
+        var lockText = locked ? "_lock" : "";
+        return $"https://media.retroachievements.org/Badge/{id}{lockText}.png";
+    }
+    public static string IconUrl(int id, bool locked = false)
+    {
+        var lockText = locked ? "_lock" : "";
+        return $"https://media.retroachievements.org/Icon/{id}{lockText}.png";
+    }
+}
+
 public static class AppendExtensions
 {
     public static int ToEpoch(this DateTime time)
