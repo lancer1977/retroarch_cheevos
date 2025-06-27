@@ -2,30 +2,32 @@ namespace PolyhydraGames.RACheevos.Systems;
 
 public class RetroArchSystemApi : RestServiceBase, IRetroArchSystemApi
 {
-    private List<GameAndHash>? _cache;
-    public static List<GameConsole>? ConsolesCache { get; set; }
+    private static Dictionary<int, List<GameAndHash>> _cache = new Dictionary<int, List<GameAndHash>>();
+    public static List<GameConsole>? ConsolesCache { get; private set; }
     public RetroArchSystemApi(ICheevoAuth authConfig, HttpClient client) : base(authConfig, client) { }
     public async ValueTask<List<GameConsole>> GetConsoleIDs()
     {
-        if (ConsolesCache != null && ConsolesCache.Any()) return  ConsolesCache;
+        if (ConsolesCache != null && ConsolesCache.Any()) return ConsolesCache;
         var url = GetBaseUrl();
         var results = await Get<List<GameConsole>>(url);
         if (results != null && results.Any())
         {
             ConsolesCache = results;
         }
-        return ConsolesCache ?? new List<GameConsole>();
+
+        return ConsolesCache ?? [];
     }
 
-    public async Task<IEnumerable<GameAndHash>> GetGameList(int systemId, bool gamesWithAchievementsOnly = false, bool returnHashes = false, bool resetCache = false)
+    public async ValueTask<List<GameAndHash>> GetGameList(int systemId, bool withAchievementsOnly = false, bool returnHashes = false, bool resetCache = false)
     {
-        if (_cache != null) return _cache;
-        var url = GetBaseUrl().Id(systemId).ParamBool("f", gamesWithAchievementsOnly).ParamBool("h", returnHashes);
-        var result = await Get<IEnumerable<GameAndHash>>(url);
+        if (resetCache) _cache.Remove(systemId);
+        if (_cache.TryGetValue(systemId, out var list)) return list;
+        var url = GetBaseUrl().Id(systemId).F(withAchievementsOnly).H(returnHashes);
+        var result = await Get<List<GameAndHash>>(url);
         if (result != null && result.Any())
         {
-            _cache = result.ToList();
+            _cache[systemId] = result.ToList();
         }
-        return _cache;
+        return _cache[systemId];
     }
 }

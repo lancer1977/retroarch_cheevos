@@ -8,6 +8,9 @@ public class GameCompletion
     public string ConsoleName { get; set; }
     public int MaxPossible { get; set; }
     public int NumAwarded { get; set; }
-    public string PctWon { get; set; }
-    public string HardcoreMode { get; set; }
+    public int NumAwardedHardcore { get; set; }
+    public DateTime? MostRecentAwardedDate { get; set; }
+    public DateTime? HighestAwardDate { get; set; }
+    public string HighestAwardKind { get; set; }
+ 
 }

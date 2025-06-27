@@ -25,7 +25,18 @@ public static class AppendExtensionsAlphabet
     {
         return url + $"&f={value}";
     }
-
+    public static string H(this string url, int value)
+    {
+        return url + $"&h={value}";
+    }
+    public static string H(this string url, bool value)
+    {
+        return url.H(value ? 1 : 0);
+    }
+    public static string F(this string url, bool value)
+    {
+        return url.F(value ? 1 : 0);
+    }
     public static string I(this string url, string value)
     {
         return url + $"&i={value}";
@@ -59,7 +70,7 @@ public static class AppendExtensions
         return url + $"&f={code}";
     }
 
-    public static string H(this string url, bool allUnlocks)
+    public static string AllUnlocks(this string url, bool allUnlocks)
     {
         var value = allUnlocks ? "5" : "3";
         return url + $"&h={value}";

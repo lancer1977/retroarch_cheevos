@@ -6,7 +6,8 @@ namespace PolyhydraGames.RACheevos
 
         public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            string dateString = reader.GetString();
+            string? dateString = reader.GetString();
+            if(dateString == null) return DateTime.MinValue;
             try
             {
                 return DateTime.Parse(dateString);

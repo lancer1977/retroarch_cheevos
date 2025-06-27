@@ -22,5 +22,5 @@ public class GetGameExtendedResponse
     public int NumDistinctPlayersCasual { get; set; }
     public int NumDistinctPlayersHardcore { get; set; }
     public List<Claim> Claims { get; set; }
-    public Dictionary<int, GameExtendedRawAchievementEntity> Achievements { get; set; }
+    public Dictionary<int, ExtendedDetailAchievement> Achievements { get; set; }
 }

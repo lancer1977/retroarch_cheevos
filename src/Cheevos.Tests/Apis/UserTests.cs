@@ -83,7 +83,7 @@ public class UserTests : BaseTests
     public async Task GetUserPoints()
     {
         var result = await Api.GetUserPoints(TestUser);
-        Assert.That(result.Points > 0);
+        Assert.That(result.SoftcorePoints > 0);
     }
 
     [Test]

@@ -13,9 +13,9 @@ public class UserClaim
     public int Status { get; set; }
     public int Extension { get; set; }
     public int Special { get; set; }
-    public string Created { get; set; }
-    public string DoneTime { get; set; }
-    public string Updated { get; set; }
+    public DateTime Created { get; set; }
+    public DateTime DoneTime { get; set; }
+    public DateTime Updated { get; set; }
     public int UserIsJrDev { get; set; }
     public int MinutesLeft { get; set; }
 }

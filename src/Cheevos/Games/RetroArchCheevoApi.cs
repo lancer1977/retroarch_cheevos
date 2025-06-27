@@ -24,15 +24,21 @@ public class RetroArchCheevoApi : RestServiceBase, IRetroArchGameApi
         return Get<GetGameExtendedResponse>(url);
     }
 
+    public Task<HashResponse> GetGameHashes(int gameId )
+    {
+        var url = GetBaseUrl().Id(gameId);
+        return Get<HashResponse>(url);
+    }
+
     public Task<GetAchievementCountResponse> GetAchievementCount(int gameId)
     {
         var url = GetBaseUrl().Id(gameId);
         return Get<GetAchievementCountResponse>(url);
     }
 
-    public Task<GetAchievementDistributionResponse> GetAchievementDistribution(int gameId, bool allUnlocks = true, bool officialAchievements = true)
+    public Task<GetAchievementDistributionResponse> GetAchievementDistribution(int gameId, bool hardcoreOnly = true, bool officialAchievements = true)
     { 
-        var url = GetBaseUrl().Id(gameId).H(allUnlocks).OfficialOnly(officialAchievements);
+        var url = GetBaseUrl().Id(gameId).H(hardcoreOnly).OfficialOnly(officialAchievements);
         return Get<GetAchievementDistributionResponse>(url);
     }
 

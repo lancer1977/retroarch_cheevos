@@ -11,6 +11,6 @@ public class GameAndHash
     public int NumAchievements { get; set; }
     public int NumLeaderboards { get; set; }
     public int Points { get; set; }
-    public string DateModified { get; set; }
+    public DateTime DateModified { get; set; }
     public int? ForumTopicID { get; set; }
 }

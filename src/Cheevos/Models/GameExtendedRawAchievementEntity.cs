@@ -1,5 +1,5 @@
 namespace PolyhydraGames.RACheevos.Models;
-public class GameExtendedRawAchievementEntity
+public class ExtendedDetailAchievement
 {
     public int ID { get; set; }
     public int NumAwarded { get; set; }
@@ -9,10 +9,10 @@ public class GameExtendedRawAchievementEntity
     public int Points { get; set; }
     public int TrueRatio { get; set; }
     public string Author { get; set; }
-    public string DateModified { get; set; }
-    public string DateCreated { get; set; }
+    public DateTime DateModified { get; set; }
+    public DateTime DateCreated { get; set; }
     public string BadgeName { get; set; }
     public int DisplayOrder { get; set; }
     public string MemAddr { get; set; }
-    public object type { get; set; }
+    public string type { get; set; }
 }

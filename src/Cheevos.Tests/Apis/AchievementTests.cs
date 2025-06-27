@@ -10,14 +10,11 @@ public class AchievementTests : BaseTests
         Api = new AchievementApi(Config, new HttpClient());
     }
 
-
-
-    [TestCase(9)]
+    [TestCase(TestGameId)]
     public async Task GetAchievementUnlocks(int id)
     {
         var result = await Api.GetAchievementUnlocks(id);
         Assert.That(result != null);
+        Assert.That(result.Unlocks.Count > 0, "No Unlocks found for game ID: " + id);
     }
-
-
 }

@@ -1,4 +1,3 @@
- 
 namespace PolyhydraGames.RACheevos.Users;
 
 public class RetroArchUserApi : RestServiceBase, IRetroArchUserApi

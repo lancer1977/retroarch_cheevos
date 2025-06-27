@@ -1,7 +1,8 @@
-namespace PolyhydraGames.RACheevos.Models;
-public class UserProfile : IUser
+namespace PolyhydraGames.RACheevos.Users;
+public class UserProfile 
 {
     public string User { get; set; }
+    public string ULID { get; set; }
     public string UserPic { get; set; }
     public string MemberSince { get; set; }
     public string RichPresenceMsg { get; set; }
