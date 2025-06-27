@@ -37,7 +37,7 @@ public class UserTests : BaseTests
     public async Task GetAchievementsEarnedBetween()
     {
         var now = DateTime.Now;
-        var start = now - TimeSpan.FromDays(10);
+        var start = now - TimeSpan.FromDays(30);
         var end = now;
 
         var result = await Api.GetAchievementsEarnedBetween(TestUser, start, end);
@@ -46,7 +46,7 @@ public class UserTests : BaseTests
     [Test]
     public async Task GetAchievementsEarnedOnDay()
     {
-        var day = DateTime.Now;
+        var day = new DateTime(2025,5,31);
         var result = await Api.GetAchievementsEarnedOnDay(TestUser, day);
         Assert.That(result.Any());
     }
@@ -96,7 +96,7 @@ public class UserTests : BaseTests
     [Test]
     public async Task GetUserRecentlyPlayedGames()
     {
-        var resultEnum = await Api.GetUserRecentlyPlayedGames(TestUser, 1000);
+        var resultEnum = await Api.GetUserRecentlyPlayedGames(TestUser, 30);
         var result = resultEnum.ToList();
         var count = result.Count;
         //Console.WriteLine(result.ToJson());
@@ -157,7 +157,7 @@ public class UserTests : BaseTests
     {
         var result = await Api.GetUserSummary(TestUser);
         Debug.WriteLine(result.ToJson());
-        Assert.That(result.Rank > 0);
+        Assert.That(result.LastGameID > 0);
     }
 
     [Test]

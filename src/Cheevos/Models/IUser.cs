@@ -15,7 +15,7 @@ namespace PolyhydraGames.RACheevos.Models
         public int Permissions { get; set; }
         public int Untracked { get; set; }
         public int ID { get; set; }
-        public int UserWallActive { get; set; }
+        public bool UserWallActive { get; set; }
         public string Motto { get; set; }
     }
 }

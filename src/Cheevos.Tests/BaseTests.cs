@@ -5,7 +5,7 @@ public abstract class BaseTests
 {
     private IConfiguration _configuration;
     public ICheevoAuth Config { get; set; }
-    protected string TestUser = "NekroG";
+    protected string TestUser = "dreadbreadcrumb";
     protected int TestGameId = 6205; 
     public BaseTests()
     {

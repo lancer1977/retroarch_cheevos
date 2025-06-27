@@ -16,9 +16,10 @@ public class GetUserSummaryResponse : IUser
     public int Permissions { get; set; }
     public int Untracked { get; set; }
     public int ID { get; set; }
-    public int UserWallActive { get; set; }
+    [JsonConverter(typeof(FlexibleBoolConverter))]
+    public bool UserWallActive { get; set; }
     public string Motto { get; set; }
-    public int Rank { get; set; }
+    public int? Rank { get; set; }
     public int RecentlyPlayedCount { get; set; }
     public List<object> RecentlyPlayed { get; set; }
     public string UserPic { get; set; }
