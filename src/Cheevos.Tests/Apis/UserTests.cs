@@ -12,7 +12,7 @@ public class UserTests : BaseTests
 
     public UserTests()
     {
-        Api = new RetroArchUserApi(Config, new HttpClient(), null);
+        Api = new RetroArchUserApi(Config, new HttpClient());
     }
 
     [Test]

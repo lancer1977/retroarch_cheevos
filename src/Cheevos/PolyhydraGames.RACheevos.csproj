@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net9.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>latest</LangVersion>
 		<Nullable>enable</Nullable>
 		<Title>Retroarch Cheevos</Title>
 		<Authors>Dread Breadcrumb</Authors>
@@ -14,10 +15,14 @@
 		<PackageId>PolyhydraGames.Retroarch.Cheevos</PackageId> 
 	</PropertyGroup>
 
-	<ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+		<PackageReference Include="System.Text.Json" Version="9.0.6" />
+	</ItemGroup>
+
+	<!--<ItemGroup>
 	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.6" />
 	  <PackageReference Include="PolyhydraGames.Core.Interfaces" Version="2.0.0.43" />
-	</ItemGroup>
+	</ItemGroup>-->
 
  
 	<ItemGroup>

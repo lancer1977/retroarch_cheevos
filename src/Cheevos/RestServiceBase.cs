@@ -26,17 +26,21 @@ public class RestServiceBase
     };
 
 
-
+#if NET6_0_OR_GREATER
     protected Uri Uri(string query)
     {
         DefaultInterpolatedStringHandler interpolatedStringHandler = new DefaultInterpolatedStringHandler(2, 3);
         interpolatedStringHandler.AppendFormatted(BaseUrl);
         interpolatedStringHandler.AppendLiteral("/");
-        //interpolatedStringHandler.AppendFormatted(this.Service);
-        //interpolatedStringHandler.AppendLiteral("/");
         interpolatedStringHandler.AppendFormatted(query);
         return new System.Uri(interpolatedStringHandler.ToStringAndClear());
     }
+#else
+    protected Uri Uri(string query)
+    {
+        return new Uri(BaseUrl + "/" + query);
+    }
+#endif
 
     private Exception OnUnauthorized()
     {

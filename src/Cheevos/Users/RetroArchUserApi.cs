@@ -1,14 +1,11 @@
-using PolyhydraGames.Core.Interfaces;
-
+ 
 namespace PolyhydraGames.RACheevos.Users;
 
 public class RetroArchUserApi : RestServiceBase, IRetroArchUserApi
-{
-    private readonly ICacheService? _redis;
+{ 
 
-    public RetroArchUserApi(ICheevoAuth authConfig, HttpClient client, ICacheService? redis) : base(authConfig, client)
-    {
-        _redis = redis;
+    public RetroArchUserApi(ICheevoAuth authConfig, HttpClient client ) : base(authConfig, client)
+    { 
     }
 
     public Task<GameInfoAndUserProgressResponse?> GetGameInfoAndUserProgress(string gameID, string userName)
@@ -140,7 +137,7 @@ public class RetroArchUserApi : RestServiceBase, IRetroArchUserApi
 
     public Task<Dictionary<int, GameProgress>?> GetUserProgress(string userName, IEnumerable<int> achievementIds)
     {
-        var url = GetBaseUrl().User(userName).I(string.Join(',',achievementIds));
+        var url = GetBaseUrl().User(userName).I(string.Join(",", achievementIds.Select(x=>x.ToString())));
         return Get<Dictionary<int, GameProgress>>(url);
     }
 
