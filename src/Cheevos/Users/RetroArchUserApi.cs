@@ -46,7 +46,12 @@ public class RetroArchUserApi : RestServiceBase, IRetroArchUserApi
         return smallresult.ToList();
 
     }
+    public async Task<List<RecentGame>> GetUserWantToPlayList(string userName, int count = 50, int offset = 0)
+    {
+        var url = GetBaseUrl().User(userName).Count(count).Offset(offset);
+        return await Get<List<RecentGame>>(url);
 
+    }
     private Task<IEnumerable<RecentGame>> GetUserRecentlyPlayedGames(string userName, int count, int offset)
     {
         var url = GetBaseUrl().User(userName).Count(count).Offset(offset);
@@ -63,6 +68,18 @@ public class RetroArchUserApi : RestServiceBase, IRetroArchUserApi
     {
         var url = GetBaseUrl().User(userName);
         return Get<IEnumerable<GameCompletion>>(url);
+    }
+
+    public async Task<IEnumerable<UserProfile>> GetUsersIFollow( int count = 100, int offset = 0)
+    {
+        var url = GetBaseUrl().Count(count).Offset(offset);
+        return await Get<List<UserProfile>>(url);
+    }
+
+    public async Task<IEnumerable<UserProfile>> GetUsersFollowingMe(int count = 100, int offset = 0)
+    {
+        var url = GetBaseUrl().Count(count).Offset(offset);
+        return await Get<List<UserProfile>>(url);
     }
 
     public async Task<UserProfile> GetUserProfile(string userName)

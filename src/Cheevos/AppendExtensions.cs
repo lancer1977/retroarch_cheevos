@@ -14,7 +14,17 @@ public static class AppendExtensions
         return url + $"&i={id}";
     }
 
+    public static string OfficialOnly(this string url, bool officialOnly)
+    {
+        var code = officialOnly ? "3" : "5";
+        return url + $"&f={code}";
+    }
 
+    public static string H(this string url, bool allUnlocks)
+    {
+        var value = allUnlocks ? "5" : "3";
+        return url + $"&h={value}";
+    }
 
     public static string ParamBool(this string url, string param, bool value)
     {
@@ -70,7 +80,7 @@ public static class AppendExtensions
         }
         return url + $"&g={gameId}";
     }
-
+    //masters ? "1" : "0";
     public static string GameID(this string url, int? gameId)
     {
         if (gameId == null)
@@ -78,6 +88,13 @@ public static class AppendExtensions
             return url;
         }
         return url + $"&g={gameId}";
+    }
+
+    public static string Masters(this string url, bool master)
+    { 
+        var value = master ? "1" : "0";
+
+        return value;
     }
 
     public static string User(this string url, string? user)

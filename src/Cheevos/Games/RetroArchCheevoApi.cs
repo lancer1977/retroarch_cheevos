@@ -15,7 +15,7 @@ public class RetroArchCheevoApi : RestServiceBase, IRetroArchGameApi
     {
         if (GameCache.TryGetValue(gameId, out var game))
             return game;
-        var url = GetBaseUrl() + $"&i={gameId}";
+        var url = GetBaseUrl().Id(gameId);
         var result = await Get<GetGameResponse>(url);
         if (result != null && !string.IsNullOrEmpty(result.Title))
             GameCache[gameId] = result;
@@ -31,22 +31,20 @@ public class RetroArchCheevoApi : RestServiceBase, IRetroArchGameApi
 
     public Task<GetAchievementCountResponse> GetAchievementCount(int gameId)
     {
-        var url = GetBaseUrl() + $"&i={gameId}";
+        var url = GetBaseUrl().Id(gameId);
         return Get<GetAchievementCountResponse>(url);
     }
 
     public Task<GetAchievementDistributionResponse> GetAchievementDistribution(int gameId, bool allUnlocks = true, bool officialAchievements = true)
-    {
-        var allUnlocksCode = allUnlocks ? "5" : "3";
-        var officialAchievementsCode = officialAchievements ? "3" : "5";
-        var url = GetBaseUrl() + $"&i={gameId}&h={allUnlocksCode}&f={officialAchievementsCode}";
+    { 
+        var url = GetBaseUrl().Id(gameId).H(allUnlocks).OfficialOnly(officialAchievements);
         return Get<GetAchievementDistributionResponse>(url);
     }
 
     public Task<GetGameRankAndScoreResponse> GetGameRankAndScore(int gameId, bool masters = false)
     {
-        var mastersCode = masters ? "1" : "0";
-        var url = GetBaseUrl() + $"&g={gameId}&t={mastersCode}";
+        var mastersCode = 
+        var url = GetBaseUrl().GameID(gameId) + $"&g={gameId}&t={mastersCode}";
         return Get<GetGameRankAndScoreResponse>(url);
     }
 }

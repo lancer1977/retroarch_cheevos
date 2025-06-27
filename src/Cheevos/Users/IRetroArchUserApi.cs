@@ -5,7 +5,7 @@ namespace PolyhydraGames.RACheevos.Users;
 
 public interface IRetroArchUserApi
 {
-
+    Task<List<RecentGame>> GetUserWantToPlayList(string userName, int count = 50, int offset = 0);
     Task<UserProfile> GetUserProfile(string userName);
     Task<IEnumerable<Achievement>> GetUserRecentAchievements(string userName, int minutes = 60);
 
@@ -43,4 +43,13 @@ public interface IRetroArchUserApi
     //https://retroachievements.org/API/API_GetUserCompletedGames.php?u=MaxMilyin
     Task<IEnumerable<GameCompletion>> GetUserCompletedGames(string userName);
     //Task<IEnumerable<UserRecentlyPlayedGame>> GetUserRecentlyPlayedGames(string userName);
+
+    //https://retroachievements.org/API/API_GetUsersIFollow.php y c 500 o m
+    Task<IEnumerable<UserProfile>> GetUsersIFollow( int count = 100, int offset = 0);
+
+    //https://retroachievements.org/API/API_GetUsersFollowingMe.php
+
+    Task<IEnumerable<UserProfile>> GetUsersFollowingMe( int count = 100, int offset = 0);
+
+
 }
