@@ -1,4 +1,4 @@
-using PolyhydraGames.RACheevos.Achievements;
+using PolyhydraGames.RACheevos.Enums;
 
 namespace PolyhydraGames.RACheevos.Models;
 public class GameExtendedAchievement

@@ -1,5 +1,5 @@
-namespace PolyhydraGames.RACheevos.Games.Responses;
-public class GameInfoAndUserProgressResponse
+namespace PolyhydraGames.RACheevos.Models;
+public class GameInfoAndUserProgressResponse : IUser
 {
     public string User { get; set; }
     public string MemberSince { get; set; }

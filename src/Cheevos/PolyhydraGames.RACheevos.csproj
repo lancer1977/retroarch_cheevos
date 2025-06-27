@@ -4,7 +4,6 @@
 		<TargetFrameworks>net9.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<Language>8.0</Language>
 		<Title>Retroarch Cheevos</Title>
 		<Authors>Dread Breadcrumb</Authors>
 		<Description>A C# wrapper for the Retroarch Cheevo rest API</Description>
@@ -12,9 +11,7 @@
 		<PackageProjectUrl>https://github.com/lancer1977/retroarch_cheevos</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/lancer1977/retroarch_cheevos</RepositoryUrl>
 		<RepositoryType>git</RepositoryType> 
-		<PackageId>PolyhydraGames.Retroarch.Cheevos</PackageId>
-		<Authors>John Doe</Authors>
-		<Company>Contoso</Company>
+		<PackageId>PolyhydraGames.Retroarch.Cheevos</PackageId> 
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -2,8 +2,7 @@ using PolyhydraGames.Core.Models;
 using PolyhydraGames.RACheevos.Models;
 using PolyhydraGames.RACheevos.Users;
 using System.Diagnostics;
-using System.Text;
-using PolyhydraGames.RACheevos.Users.Models;
+using System.Text; 
 
 namespace PolyhydraGames.RACheevos.Test.Apis;
 
@@ -38,7 +37,7 @@ public class UserTests : BaseTests
     public async Task GetAchievementsEarnedBetween()
     {
         var now = DateTime.Now;
-        var start = now - TimeSpan.FromDays(1000);
+        var start = now - TimeSpan.FromDays(10);
         var end = now;
 
         var result = await Api.GetAchievementsEarnedBetween(TestUser, start, end);
@@ -54,7 +53,7 @@ public class UserTests : BaseTests
     [Test]
     public async Task GetGameInfoAndUserProgress()
     {
-        var result = await Api.GetGameInfoAndUserProgress("dreadbreadcrumb", TestUser, TestGameId);
+        var result = await Api.GetGameInfoAndUserProgress(TestUser, TestGameId);
     }
     [Test]
     public async Task GetUserCompletionProgress()

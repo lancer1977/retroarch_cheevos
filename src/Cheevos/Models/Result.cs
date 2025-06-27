@@ -1,6 +1,6 @@
-namespace PolyhydraGames.RACheevos.Feeds;
+namespace PolyhydraGames.RACheevos.Models;
 
-public class Result
+public class GameAward
 {
     public string User { get; set; }
     public string AwardKind { get; set; }

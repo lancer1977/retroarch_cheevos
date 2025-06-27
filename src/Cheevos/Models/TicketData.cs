@@ -1,4 +1,4 @@
-namespace PolyhydraGames.RACheevos.Tickets;
+namespace PolyhydraGames.RACheevos.Models;
 
 public class TicketData
 {

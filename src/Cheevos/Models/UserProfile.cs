@@ -1,5 +1,5 @@
-namespace PolyhydraGames.RACheevos.Users.Models;
-public class UserProfile
+namespace PolyhydraGames.RACheevos.Models;
+public class UserProfile : IUser
 {
     public string User { get; set; }
     public string UserPic { get; set; }
@@ -14,6 +14,6 @@ public class UserProfile
     public int Permissions { get; set; }
     public int Untracked { get; set; }
     public int ID { get; set; }
-    public bool UserWallActive { get; set; }
+    public int UserWallActive { get; set; }
     public string Motto { get; set; }
 }

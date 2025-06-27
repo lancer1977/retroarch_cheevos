@@ -6,8 +6,7 @@ public class EventApi : RestServiceBase, IRetroArchEventApi
     {
     }
 
-
-    public Task<EventResponse> GetAchievementOfTheWeek()
+    public Task<EventResponse?> GetAchievementOfTheWeek()
     {
         var url = GetBaseUrl();
         return Get<EventResponse>(url);

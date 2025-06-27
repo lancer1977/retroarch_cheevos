@@ -1,4 +1,4 @@
-namespace PolyhydraGames.RACheevos.Users.Models;
+namespace PolyhydraGames.RACheevos.Models;
 public class UserPoints
 {
     public int Points { get; set; }

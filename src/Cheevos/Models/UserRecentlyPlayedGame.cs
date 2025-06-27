@@ -1,4 +1,4 @@
-namespace PolyhydraGames.RACheevos.Users;
+namespace PolyhydraGames.RACheevos.Models;
 
 public class UserRecentlyPlayedGame
 {

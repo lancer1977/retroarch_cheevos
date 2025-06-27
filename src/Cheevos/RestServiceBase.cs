@@ -54,6 +54,7 @@ public class RestServiceBase
         if (httpResponseMessage.IsSuccessStatusCode)
         {
             var responseString = await httpResponseMessage.Content.ReadAsStringAsync();
+            Debug.WriteLine(responseString);
             try
             {
                 T obj = JsonSerializer.Deserialize<T>(responseString, this.Options);

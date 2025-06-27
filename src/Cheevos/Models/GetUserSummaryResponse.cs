@@ -1,7 +1,7 @@
-namespace PolyhydraGames.RACheevos.Games.Responses;
+namespace PolyhydraGames.RACheevos.Models;
 
 
-public class GetUserSummaryResponse
+public class GetUserSummaryResponse : IUser
 {
     public string User { get; set; }
     public string MemberSince { get; set; }

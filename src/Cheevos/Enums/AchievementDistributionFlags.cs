@@ -1,4 +1,4 @@
-namespace PolyhydraGames.RACheevos.Achievements;
+namespace PolyhydraGames.RACheevos.Enums;
 public enum AchievementDistributionFlags
 {
     CoreAchievements = 3,

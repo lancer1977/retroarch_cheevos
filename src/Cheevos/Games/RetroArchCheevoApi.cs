@@ -1,31 +1,26 @@
-
-using PolyhydraGames.RACheevos.Games.Interfaces;
-using PolyhydraGames.RACheevos.Games.Responses;
-
 namespace PolyhydraGames.RACheevos.Games;
 public class RetroArchCheevoApi : RestServiceBase, IRetroArchGameApi
 {
-    public Dictionary<int, GetGameResponse> GameCache = new();
+    public Dictionary<int, Game> GameCache = new();
 
     public RetroArchCheevoApi(ICheevoAuth authConfig, HttpClient client) : base(authConfig, client)
     {
     }
 
-    public async ValueTask<GetGameResponse> GetGame(int gameId)
+    public async ValueTask<Game> GetGame(int gameId)
     {
         if (GameCache.TryGetValue(gameId, out var game))
             return game;
         var url = GetBaseUrl().Id(gameId);
-        var result = await Get<GetGameResponse>(url);
+        var result = await Get<Game>(url);
         if (result != null && !string.IsNullOrEmpty(result.Title))
             GameCache[gameId] = result;
         return result;
     }
 
     public Task<GetGameExtendedResponse> GetGameExtended(int gameId, bool officialAchievements = true)
-    {
-        var code = officialAchievements ? "3" : "5";
-        var url = GetBaseUrl().Id(gameId).ParamString("f", code);
+    { 
+        var url = GetBaseUrl().Id(gameId).OfficialOnly(officialAchievements);
         return Get<GetGameExtendedResponse>(url);
     }
 
@@ -43,8 +38,7 @@ public class RetroArchCheevoApi : RestServiceBase, IRetroArchGameApi
 
     public Task<GetGameRankAndScoreResponse> GetGameRankAndScore(int gameId, bool masters = false)
     {
-        var mastersCode = 
-        var url = GetBaseUrl().GameID(gameId) + $"&g={gameId}&t={mastersCode}";
+        var url = GetBaseUrl().GameID(gameId).Masters(masters);
         return Get<GetGameRankAndScoreResponse>(url);
     }
 }
